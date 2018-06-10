@@ -180,4 +180,4 @@ Route::resource('products', 'ProductController');
 //Clase 8 tablas con realaciones parte 2 mini proyecto
 Route::resource('pedidos', 'pedidoController');
 
-Route::resource('ventas', 'ventaController');
+Route::resource('ventas', 'VentaController');

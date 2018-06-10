@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Venta;
-use App\Pedido; 
+use App\Pedido;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
 
-
-class VentasController extends Controller
+class VentaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +22,7 @@ class VentasController extends Controller
         ->select('ventas.*','pedidos.id as cddesc')
         ->get();
         return  view('ventas.index',['ventas'=>$ventas]);
-
+        
     }
 
     /**
@@ -34,6 +33,10 @@ class VentasController extends Controller
     public function create()
     {
         //
+        $pedidos = Pedido::pluck('id');
+        return view('ventas.create',['pedidos' => $pedidos]);
+
+
     }
 
     /**
@@ -45,6 +48,10 @@ class VentasController extends Controller
     public function store(Request $request)
     {
         //
+        $data= $request->all();
+        Venta::create($data);
+        return redirect('ventas');
+  
     }
 
     /**
@@ -56,8 +63,7 @@ class VentasController extends Controller
     public function show(Venta $venta)
     {
         //
-
-
+        return "show";
     }
 
     /**
@@ -69,6 +75,10 @@ class VentasController extends Controller
     public function edit(Venta $venta)
     {
         //
+        $venta=Venta::find ($venta->id);
+        $pedidos = Pedido::pluck('id');
+        return view('ventas.edit',['venta'=> $venta,'pedidos'=>$pedidos]); 
+
     }
 
     /**
@@ -81,6 +91,11 @@ class VentasController extends Controller
     public function update(Request $request, Venta $venta)
     {
         //
+        
+        $vventa = Venta::find($venta->id);
+        $data=$request->all();
+        $vventa->update($data);
+        return redirect('ventas');
     }
 
     /**
@@ -92,5 +107,8 @@ class VentasController extends Controller
     public function destroy(Venta $venta)
     {
         //
+        $vventa = Venta::find($venta->id);
+        $venta->destroy($venta->id);
+        return redirect('ventas');
     }
 }

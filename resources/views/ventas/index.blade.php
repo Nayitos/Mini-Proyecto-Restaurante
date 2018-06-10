@@ -5,7 +5,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Registro de Ventas</title>
 </head>
 <body>
 
@@ -14,7 +14,7 @@
         <script>
         function ConfirmDelete()
         {
-            var x=confirm('Estas seguro');
+            var x=confirm('estas seguro');
             if(x)
             {
                 return true;
@@ -28,20 +28,20 @@
 
         }
         </script>
-        <a class="indigo btn" href="/ventas/create"><i class="material-icons right">create</i>New</a>
+          <a class="indigo btn" href="/ventas/create"><i class="material-icons right">create</i>New</a>
         <br>    
         <table>
             <tr>
                 <th>ID</th>
+                <th>Fecha de pedido</th>
                 <th>Numero de pedido</th>
-                <th>Fecha de registro</th>
-               
             </tr>
         @foreach($ventas as $venta)
             <tr>
                 <td>{{ $venta->id}}</td>
-                <td>{{ $venta->cddesc}}</td>
                 <td>{{ $venta->created_at}}</td>
+                <td>{{ $venta->cddesc}}</td>
+
                 <td><a class="waves-effect waves-light  indigo lighten-1 btn" href="{!! '/ventas/'.$venta->id.'/edit'!!}"><i class="material-icons right">edit</i>Edit</a>
                 <div id=formDelete>
                 {!!Form::open(['url' => '/ventas/'.$venta->id, 'method' => 'delete', 'style'=> 'display: inline-block;','id'=>'FormDelete()','onsubmit'=>'return ConfirmDelete()']) !!}
