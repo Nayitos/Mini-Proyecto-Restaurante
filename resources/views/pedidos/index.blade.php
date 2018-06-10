@@ -5,7 +5,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Registrar pedido</title>
 </head>
 <body>
 
@@ -14,7 +14,7 @@
         <script>
         function ConfirmDelete()
         {
-            var x=confirm('estas seguro');
+            var x=confirm('Estas seguro');
             if(x)
             {
                 return true;
@@ -28,30 +28,30 @@
 
         }
         </script>
-        <a class="indigo btn" href="/Pedidos/create"><i class="material-icons right">create</i>New</a>
-        <br>
+        <a class="indigo btn" href="/pedidos/create"><i class="material-icons right">create</i>New</a>
+        <br>    
         <table>
             <tr>
-                <th>Id pedido</th>
-                <th>Nombre pedido</th>
-                <th>precio</th>
-                <th>id cliente</th>
-                <th>Acciones</th>
+                <th>ID</th>
+                <th>Nombre del Pedido</th>
+                <th>ID Cliente</th>
+                <th>Precio</th>
             </tr>
-        @foreach($Pedidos as $pedido)
+        @foreach($pedidos as $pedido)
             <tr>
                 <td>{{ $pedido->id}}</td>
                 <td>{{ $pedido->nombrepedido}}</td>
-                <td>{{ $pedido->precio}}</td>
                 <td>{{ $pedido->cddesc}}</td>
+                <td>{{ $pedido->precio}}</td>
                
-                
-                <td><a class="waves-effect waves-light  indigo lighten-1 btn" href="{!! '/Pedidos/'.$pedidos->id.'/edit'!!}"><i class="material-icons right">edit</i>Edit</a>
+
+                <td><a class="waves-effect waves-light  indigo lighten-1 btn" href="{!! '/pedidos/'.$pedido->id.'/edit'!!}"><i class="material-icons right">edit</i>Edit</a>
                 <div id=formDelete>
-                {!!Form::open(['url' => '/Pedidos/'.$pedidos->id, 'method' => 'delete', 'style'=> 'display: inline-block;','id'=>'FormDelete()','onsubmit'=>'return ConfirmDelete()']) !!}
+                {!!Form::open(['url' => '/pedidos/'.$pedido->id, 'method' => 'delete', 'style'=> 'display: inline-block;','id'=>'FormDelete()','onsubmit'=>'return ConfirmDelete()']) !!}
                 {!!Form::button('<i class="material-icons right">delete</i>Delete', ['type'=>'submit', 'class'=>'"waves-effect waves-light red accent-4 btn']) !!}
                 {!!Form::close()!!}
                 </div>
+                
                 </td>
             </tr>
         @endforeach

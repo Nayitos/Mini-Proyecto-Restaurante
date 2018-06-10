@@ -176,4 +176,6 @@ Route::resource('clientes', 'clienteController');
 //Clase 7 tablas con relaciones
 Route::resource('products', 'ProductController');
 
-Route::resource('Pedidos', 'pedidoController');
+
+//Clase 8 tablas con realaciones parte 2 mini proyecto
+Route::resource('pedidos', 'pedidoController');

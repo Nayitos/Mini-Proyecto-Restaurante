@@ -9,6 +9,6 @@ class pedido extends Model
     //
     protected $fillable = [
 
-        'nombrepedido','precio','id'
+        'nombrepedido','precio','idCliente'
     ];
 }

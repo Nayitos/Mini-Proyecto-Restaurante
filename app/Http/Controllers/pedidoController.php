@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\pedido;
 use App\Cliente;
-
+use App\Pedido;
+use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
 
-use Illuminate\Http\Request;
-
-class pedidoController extends Controller
+class PedidoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,13 +16,13 @@ class pedidoController extends Controller
      */
     public function index()
     {
-        $pedidos = DB::table ('Pedidos')
-       ->join('clientes','Pedidos.idCliente','=','clientes.id')
-         ->select('Pedidos.*','clientes.id as cddesc')
-            ->get();
-               
-               return view('Pedidos.index',['Pedidos'=>$pedidos]);
-
+        ////mostrar los registros
+        //$products= Product::all();
+        $pedidos = DB::table ('pedidos')
+        ->join('clientes','pedidos.id','=','clientes.id')
+        ->select('pedidos.*','clientes.id as cddesc')
+        ->get(); 
+         return view('pedidos.index',['pedidos'=>$pedidos]);
     }
 
     /**
@@ -34,10 +32,10 @@ class pedidoController extends Controller
      */
     public function create()
     {
-        //
-        $clientes = Cliente::pluck('id');//borrar esta linea
-        return view('Pedidos.create',['clientes' => $clientes]);//borrar esta linea
-        //return view('Pedidos.create');
+        //Mandar datos
+        $clientes = Cliente::pluck('id');
+        return view('pedidos.create',['clientes' => $clientes]);
+
     }
 
     /**
@@ -48,19 +46,19 @@ class pedidoController extends Controller
      */
     public function store(Request $request)
     {
+        //Guardar datos
         $data= $request->all();
-        pedido::create($data);
-        return redirect('Pedidos');
-
+        Pedido::create($data);
+        return redirect('pedidos');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\pedido  $pedido
+     * @param  \App\pedidos  $pedidos
      * @return \Illuminate\Http\Response
      */
-    public function show(pedido $pedido)
+    public function show(pedidos $pedidos)
     {
         //
         return "show";
@@ -69,48 +67,34 @@ class pedidoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\pedido  $pedido
+     * @param  \App\pedidos  $pedidos
      * @return \Illuminate\Http\Response
      */
-    public function edit(pedido $pedidos)
+    public function edit(pedidos $pedidos)
     {
         //
-        $pedidos=pedido::find ($pedidos->id);
-        $clientes = Cliente::pluck('id');//borrar esta linea
-        return view('Pedidos.edit',['Pedido'=> $pedidos,$clientes,'clientes']);//borrar depues de $pedidos
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\pedido  $pedido
+     * @param  \App\pedidos  $pedidos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pedido $pedidos)
+    public function update(Request $request, pedidos $pedidos)
     {
         //
-        $vpedido = pedido::find($pedidos->id);
-        $data=$request->all();
-        $vpedido->update($data);
-        return redirect('Pedidos');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\pedido  $pedido
+     * @param  \App\pedidos  $pedidos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pedido $pedidos)
+    public function destroy(pedidos $pedidos)
     {
         //
-        $vpedido = pedido::find($pedidos->id);
-        $pedidos->destroy($pedidos->id);
-        return redirect('Pedidos');
-
-
-
-
     }
 }
