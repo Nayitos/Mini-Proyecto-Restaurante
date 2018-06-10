@@ -16,7 +16,6 @@ class CreateVentasTable extends Migration
         Schema::create('ventas', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('idPedido');
-            $table->integer('total');
             $table->timestamps();
             $table->foreign('idPedido')->references('id')->on('pedidos')->onDelete('cascade');
         

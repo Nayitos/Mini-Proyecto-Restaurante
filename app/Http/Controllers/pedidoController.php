@@ -17,12 +17,11 @@ class PedidoController extends Controller
     public function index()
     {
         ////mostrar los registros
-        //$products= Product::all();
-        $pedidos = DB::table ('pedidos')
-        ->join('clientes','pedidos.id','=','clientes.id')
-        ->select('pedidos.*','clientes.id as cddesc')
-        ->get(); 
-         return view('pedidos.index',['pedidos'=>$pedidos]);
+$pedidos = DB::table ('pedidos')
+->join('clientes','pedidos.idCliente','=','clientes.id')
+->select('pedidos.*','clientes.id as cddesc')
+->get();
+return  view('pedidos.index',['pedidos'=>$pedidos]);
     }
 
     /**
@@ -58,7 +57,7 @@ class PedidoController extends Controller
      * @param  \App\pedidos  $pedidos
      * @return \Illuminate\Http\Response
      */
-    public function show(pedidos $pedidos)
+    public function show(pedido $pedido)
     {
         //
         return "show";
@@ -67,34 +66,46 @@ class PedidoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\pedidos  $pedidos
+     * @param  \App\Pedido $pedido
      * @return \Illuminate\Http\Response
      */
-    public function edit(pedidos $pedidos)
+    public function edit(Pedido $pedido)
     {
-        //
+        //Editar datos
+        $pedido=Pedido::find ($pedido->id);
+        $clientes = Cliente::pluck('id');
+        return view('pedidos.edit',['pedido'=> $pedido,'clientes'=>$clientes]); 
+
     }
+
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\pedidos  $pedidos
+     * @param  \App\Pedido  $pedido
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pedidos $pedidos)
+    public function update(Request $request, Pedido $pedido)
     {
-        //
+        //Editar pedido
+        $vpedido = Pedido::find($pedido->id);
+        $data=$request->all();
+        $vpedido->update($data);
+        return redirect('pedidos');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\pedidos  $pedidos
+     * @param  \App\Pedido  $pedido
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pedidos $pedidos)
+    public function destroy(Pedido $pedido)
     {
         //
+        $vpedido = Pedido::find($pedido->id);
+        $pedido->destroy($pedido->id);
+        return redirect('pedidos');
     }
 }

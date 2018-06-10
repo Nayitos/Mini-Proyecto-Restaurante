@@ -13,13 +13,16 @@
     <h3>Edit</h3>
 
     {!!Form::model($pedido, ['route' => ['pedidos.update', $pedido->id], 'method'=>'put']) !!}
-    {!!Form::text('nombrepedido}', null); !!}
+   
+    {!!Form::text('nombrepedido', null); !!}
     {!!Form::text('precio', null); !!}
+
     <div class="input-field">
-    {!!Form::select('id',$clientes); !!}
+    {!!Form::select('idCliente',$clientes); !!}
     </div>
     {!!Form::button('Actualizar', ['type'=>'submit','class'=>'"waves-effect waves-light red accent-4 btn'])!!}
     {!!Form::close()!!}
+
 
     @endsection
 </body>
