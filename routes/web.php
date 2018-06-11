@@ -181,3 +181,5 @@ Route::resource('products', 'ProductController');
 Route::resource('pedidos', 'pedidoController');
 
 Route::resource('ventas', 'VentaController');
+
+Route::resource('registrodeventas', 'RegistroDeVentaController');
