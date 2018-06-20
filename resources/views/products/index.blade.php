@@ -40,7 +40,8 @@
             </tr>
         @foreach($products as $product)
             <tr>
-                <td>{{ $product->id}}</td>
+            
+                <td> <a  href="{!! '/products/'.$product->id!!}">{{$product ->id}}</a></td>
                 <td>{{ $product->name}}</td>
                 <td>{{ $product->description}}</td>
                 <td>{{ $product->cddesc}}</td>
@@ -56,6 +57,7 @@
             </tr>
         @endforeach
         </table>
+        {{$products -> links()}}
         @endsection
 </body>
 </html>

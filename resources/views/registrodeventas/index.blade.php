@@ -32,17 +32,21 @@
         <br>    
         <table>
             <tr>
-                <th>Numero de registro</th>
-                <th>Numero de  producto</th>
-                <th>Numero de venta</th>
+                <th>Cliente</th>
+                <th>Nombre Producto</th>
+                <th>Pedido</th>
+                <th>Costo</th>
+                <th>Acciones</th>
             </tr>
-        @foreach($registrodeventas as $registrodeventas)
+        @foreach($registrodeventas as $registrodeventa)
             <tr>
-                <td>{{ $product->id}}</td>
-
-                <td>{{ $product->cdvent}</td>
-                <td>{{ $product->cdpro</td>
-
+                 <td>{{ $registrodeventa->clientenombre}}</td>
+                <td>{{ $registrodeventa->name}}</td>
+                <td>{{ $registrodeventa->nombrepedido}}</td>
+                <td>{{ $registrodeventa->precio}}</td>
+               
+                
+                
                 <td><a class="waves-effect waves-light  indigo lighten-1 btn" href="{!! '/registrodeventas/'.$registrodeventa->id.'/edit'!!}"><i class="material-icons right">edit</i>Edit</a>
                 <div id=formDelete>
                 {!!Form::open(['url' => '/registrodeventas/'.$registrodeventa->id, 'method' => 'delete', 'style'=> 'display: inline-block;','id'=>'FormDelete()','onsubmit'=>'return ConfirmDelete()']) !!}

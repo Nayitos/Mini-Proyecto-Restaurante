@@ -17,10 +17,11 @@ class VentaController extends Controller
     public function index()
     {
         //
-        $ventas = DB::table ('ventas')
+        /*$ventas = DB::table ('ventas')
         ->join('pedidos','ventas.idPedido','=','pedidos.id')
-        ->select('ventas.*','pedidos.id as cddesc')
-        ->get();
+        ->select('ventas.created_at','pedidos.id as descped')
+        ->get();*/
+        $ventas = Venta::all();
         return  view('ventas.index',['ventas'=>$ventas]);
         
     }
@@ -33,7 +34,7 @@ class VentaController extends Controller
     public function create()
     {
         //
-        $pedidos = Pedido::pluck('id');
+        $pedidos = Pedido::pluck('nombrepedido','id');
         return view('ventas.create',['pedidos' => $pedidos]);
 
 
@@ -50,6 +51,7 @@ class VentaController extends Controller
         //
         $data= $request->all();
         Venta::create($data);
+        
         return redirect('ventas');
   
     }

@@ -14,9 +14,9 @@
 <body>
   <nav class=" indigo lighten-3  indigo darken-2" role="navigation">
       <div class="nav-wrapper">
-          <a href="home" class="brand-logo"  large: 6rem><i class="material-icons">format_list_numbered</i>MateChidas</a>
+          <a href="/welcome" class="brand-logo"  large: 6rem><i class="material-icons">format_list_numbered</i>MateChidas</a>
           <ul class="right hide-on-med-and-down">
-            <li><a href="home"><i class="material-icons">keyboard_backspace </i></a></li>
+            <li><a href="/welcome"><i class="material-icons">keyboard_backspace </i></a></li>
             Volver
           </ul>
         </div>

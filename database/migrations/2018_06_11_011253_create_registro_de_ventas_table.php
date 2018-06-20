@@ -25,7 +25,8 @@ class CreateRegistroDeVentasTable extends Migration
       $table->timestamps();
         });
     }
-
+//nombre del producto, su costo, cliente
+//fecha, 
     /**
      * Reverse the migrations.
      *

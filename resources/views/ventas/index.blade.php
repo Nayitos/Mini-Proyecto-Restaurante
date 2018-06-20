@@ -32,15 +32,13 @@
         <br>    
         <table>
             <tr>
-                <th>ID</th>
                 <th>Fecha de pedido</th>
                 <th>Numero de pedido</th>
             </tr>
         @foreach($ventas as $venta)
             <tr>
-                <td>{{ $venta->id}}</td>
                 <td>{{ $venta->created_at}}</td>
-                <td>{{ $venta->cddesc}}</td>
+                <td>{{ $venta->idPedido}}</td>
 
                 <td><a class="waves-effect waves-light  indigo lighten-1 btn" href="{!! '/ventas/'.$venta->id.'/edit'!!}"><i class="material-icons right">edit</i>Edit</a>
                 <div id=formDelete>
