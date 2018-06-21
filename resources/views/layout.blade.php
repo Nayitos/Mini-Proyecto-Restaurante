@@ -108,6 +108,9 @@
   <script src="{!!asset('js/jquery-3.3.1.min.js')!!}"></script>
   <script src="{!!asset('js/materialize.js')!!}"></script>
   <script src="{!!asset('js/init.js')!!}"></script>
+
+  @yield('footer') 
+
   <script> $(document).ready(function(){  $('select').formSelect(); });  </script>
   </body>
 </html>

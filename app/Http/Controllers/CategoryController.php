@@ -77,6 +77,29 @@ class CategoryController extends Controller
 
     }
 
+
+    //Boton
+
+        
+        public function prueba(Request $request){
+
+            $query = $request -> Query;
+
+            /*
+            $nombres = array('Adrian','Humberto','German','Daniel','Isaac');
+            $edades = array(28,45,44,62,18);
+            $nombre = $nombres[rand(0,4)];
+            $edad = $edades[rand(0,4)];
+    
+            $resultado = array(
+                'resultado' => "Tu nombre es ".$nombre.", tu edad es ".$edad,
+            );
+    
+            echo json_encode($resultado); */
+        }
+    
+
+
     /**
      * Update the specified resource in storage.
      *

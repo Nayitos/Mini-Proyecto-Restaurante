@@ -183,3 +183,10 @@ Route::resource('pedidos', 'pedidoController');
 Route::resource('ventas', 'VentaController');
 
 Route::resource('registrodeventas', 'RegistroDeVentaController');
+
+//Clase 9 ajax y boton de consultas
+Route::get('prueba/ajax', 'CategoryController@prueba')->name('prueba.ajax');
+
+Route::get('prueba/busqueda', function(){ return view('categories.busqueda'); });
+
+
