@@ -28,26 +28,25 @@
 
         }
         </script>
-        <a class="indigo btn" href="/products/create"><i class="material-icons right">create</i>New</a>
+        <a class="indigo btn" href="/autores/create"><i class="material-icons right">create</i>New</a>
         <br>    
         <table>
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
-                <th>Description</th>
-                <th>Category</th>
-                <th>Price</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+        
             </tr>
-        @foreach($products as $product)
+        @foreach($autores as $autor)
             <tr>
-                <td> <a  href="{!! '/products/'.$product->id!!}">{{$product ->id}}</a></td>
-                <td>{{ $product->name}}</td>
-                <td>{{ $product->description}}</td>
-                <td>{{ $product->cddesc}}</td>
-                <td>{{ $product->price}}</td>
-                <td><a class="waves-effect waves-light  indigo lighten-1 btn" href="{!! '/products/'.$product->id.'/edit'!!}"><i class="material-icons right">edit</i>Edit</a>
+                <td> <a  href="{!! '/autores/'.$autor->id!!}">{{$autor ->id}}</a></td>
+                <td>{{ $autor->nombre}}</td>
+                <td>{{ $autor->apellidoPaterno}}</td>
+                <td>{{ $autor->apellidoMaterno}}</td>
+                <td><a class="waves-effect waves-light  indigo lighten-1 btn" href="{!! '/autores/'.$autor->id.'/edit'!!}"><i class="material-icons right">edit</i>Edit</a>
                 <div id=formDelete>
-                {!!Form::open(['url' => '/products/'.$product->id, 'method' => 'delete', 'style'=> 'display: inline-block;','id'=>'FormDelete()','onsubmit'=>'return ConfirmDelete()']) !!}
+                {!!Form::open(['url' => '/autores/'.$autor->id, 'method' => 'delete', 'style'=> 'display: inline-block;','id'=>'FormDelete()','onsubmit'=>'return ConfirmDelete()']) !!}
                 {!!Form::button('<i class="material-icons right">delete</i>Delete', ['type'=>'submit', 'class'=>'"waves-effect waves-light red accent-4 btn']) !!}
                 {!!Form::close()!!}
                 </div>
@@ -56,7 +55,6 @@
             </tr>
         @endforeach
         </table>
-        {{$products -> links()}}
         @endsection
 </body>
 </html>

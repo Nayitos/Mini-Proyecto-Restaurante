@@ -15,13 +15,15 @@
         <br>
         <table>
             <tr>
+                
                 <th>Id Cliente</th>
                 <th>Nombre</th>
                 <th>Acciones</th>
             </tr>
         @foreach($clientes as $cliente)
             <tr>
-                <td>{{ $cliente->id}}</td>
+                <td> <a  href="{!! '/clientes/'.$cliente->id!!}">{{$cliente ->id}}</a></td>
+                        
                 <td>{{ $cliente->nombre}}</td>
                 <td><a class="waves-effect waves-light  indigo lighten-1 btn" href="{!! '/clientes/'.$cliente->id.'/edit'!!}"><i class="material-icons right">edit</i>Edit</a>
                 <div idCliente=formDelete>
@@ -33,6 +35,7 @@
             </tr>
         @endforeach
         </table>
+        {{$clientes->links()}}
         @endsection
 </body>
 </html>

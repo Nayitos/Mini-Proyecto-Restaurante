@@ -39,7 +39,7 @@
             </tr>
         @foreach($pedidos as $pedido)
             <tr>
-                <td>{{ $pedido->id}}</td>
+                <td> <a  href="{!! '/pedidos/'.$pedido->id!!}">{{$pedido ->id}}</a></td>
                 <td>{{ $pedido->nombrepedido}}</td>
                 <td>{{ $pedido->cddesc}}</td>
                 <td>{{ $pedido->precio}}</td>
@@ -56,6 +56,7 @@
             </tr>
         @endforeach
         </table>
+        {{$pedidos -> links()}}
         @endsection
 </body>
 </html>

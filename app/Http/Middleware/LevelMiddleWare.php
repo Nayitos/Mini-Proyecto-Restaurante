@@ -15,7 +15,7 @@ class LevelMiddleWare
      */
     public function handle($request, Closure $next)
     {
-        if  ($request->user() && $request->user ()-> level !=3)
+        if  ($request->user() && $request->user ()-> level !=2)
         {
             return redirect('home');
         }

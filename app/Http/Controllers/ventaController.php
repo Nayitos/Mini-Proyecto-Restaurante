@@ -21,8 +21,9 @@ class VentaController extends Controller
         ->join('pedidos','ventas.idPedido','=','pedidos.id')
         ->select('ventas.created_at','pedidos.id as descped')
         ->get();*/
-        $ventas = Venta::all();
-        return  view('ventas.index',['ventas'=>$ventas]);
+       // $ventas = Venta::all();
+       $venta = DB::table ('ventas')->paginate(2);
+        return  view('ventas.index',['ventas'=>$venta]);
         
     }
 
@@ -65,7 +66,10 @@ class VentaController extends Controller
     public function show(Venta $venta)
     {
         //
-        return "show";
+     return "show";
+       //$venta=Venta::find($venta->id);
+       //$description=Product::find($description->id);
+      // return view('ventas.show',['venta'=>$venta]);
     }
 
     /**

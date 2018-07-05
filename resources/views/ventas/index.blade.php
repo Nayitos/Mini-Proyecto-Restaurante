@@ -51,6 +51,7 @@
             </tr>
         @endforeach
         </table>
+        {{$ventas->links()}}
         @endsection
 </body>
 </html>

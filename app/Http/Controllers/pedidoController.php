@@ -20,7 +20,7 @@ class PedidoController extends Controller
 $pedidos = DB::table ('pedidos')
 ->join('clientes','pedidos.idCliente','=','clientes.id')
 ->select('pedidos.*','clientes.id as cddesc')
-->get();
+->paginate(5);
 return  view('pedidos.index',['pedidos'=>$pedidos]);
     }
 
@@ -60,7 +60,10 @@ return  view('pedidos.index',['pedidos'=>$pedidos]);
     public function show(pedido $pedido)
     {
         //
-        return "show";
+        //return "show";
+        $pedido=Pedido::find($pedido->id);
+        //$description=Product::find($description->id);
+        return view('pedidos.show',['pedido'=>$pedido]);
     }
 
     /**

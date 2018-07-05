@@ -1,12 +1,8 @@
 
 
-
-
         @extends('layout')
         @section('tres')
-        <h4>Nombre del producto: {{$product->name}}</h4>
-        <h4>Description del producto: {{$product->description}}</h4>
-        <h4>Nombre del producto: {{$product->category_id}}</h4>
-        <h4>Precio del producto: {{$product->price}}</h4>
+        <h1> El nombre del producto es: {{$product->id}}</h1>
+        <h1> La descripcion producto es: {{$product->description}}</h1>
+        
         @endsection
-

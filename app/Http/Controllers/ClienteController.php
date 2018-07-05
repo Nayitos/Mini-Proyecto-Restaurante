@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\support\Facades\DB;
 
 class ClienteController extends Controller
 {
@@ -16,9 +17,11 @@ class ClienteController extends Controller
     public function index()
     {
         //mostrar los registros
-        $clientes= Cliente::all();
-        
+    // $clientes= Cliente::all();
+     //->paginate(3);
+     $clientes = DB::table ('clientes')->paginate(4);
         return  view('clientes.index',['clientes'=>$clientes]);
+
         
     }
 
@@ -61,7 +64,10 @@ class ClienteController extends Controller
     public function show(Cliente $cliente)
     {
         //mostrar informacion especifica sobre una categoria
-        return "show";
+       // return "show";
+       $cliente=Cliente::find($cliente->id);
+       $cliente=Cliente::find($cliente->id);
+       return view('clientes.show',['cliente'=>$cliente ]);
     }
 
     /**

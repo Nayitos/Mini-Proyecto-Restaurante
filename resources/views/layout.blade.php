@@ -14,9 +14,9 @@
 <body>
   <nav class=" indigo lighten-3  indigo darken-2" role="navigation">
       <div class="nav-wrapper">
-          <a href="/welcome" class="brand-logo"  large: 6rem><i class="material-icons">format_list_numbered</i>MateChidas</a>
+          <a href="/home" class="brand-logo"  large: 6rem><i class="material-icons">format_list_numbered</i>MateChidas</a>
           <ul class="right hide-on-med-and-down">
-            <li><a href="/welcome"><i class="material-icons">keyboard_backspace </i></a></li>
+            <li><a href="/home"><i class="material-icons">keyboard_backspace </i></a></li>
             Volver
           </ul>
         </div>
@@ -82,7 +82,7 @@
 
   
 
-  <footer class="page-footer indigo lighten-2">
+   <footer class="page-footer indigo lighten-2">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
@@ -103,14 +103,21 @@
     </div>
   </footer>
 
-
   <!--  Scripts-->
   <script src="{!!asset('js/jquery-3.3.1.min.js')!!}"></script>
   <script src="{!!asset('js/materialize.js')!!}"></script>
-  <script src="{!!asset('js/init.js')!!}"></script>
+  @yield('footer')
+  
+<script type="text/javascript">
+$(document).ready(function(){
+    $('select').formSelect();
+  });
+  </script>
 
-  @yield('footer') 
 
-  <script> $(document).ready(function(){  $('select').formSelect(); });  </script>
+
   </body>
 </html>
+
+
+

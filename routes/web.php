@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/welcome', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
@@ -184,9 +184,25 @@ Route::resource('ventas', 'VentaController');
 
 Route::resource('registrodeventas', 'RegistroDeVentaController');
 
-//Clase 9 ajax y boton de consultas
-Route::get('prueba/ajax', 'CategoryController@prueba')->name('prueba.ajax');
+Route::get('/prueba/ajax', 'CategoryController@prueba')->name('prueba.ajax');
 
-Route::get('prueba/busqueda', function(){ return view('categories.busqueda'); });
+Route::get('/prueba/busqueda', function(){
+
+    return view('categories.busqueda');
+});
 
 
+//Clase 9
+Route::resource('levels', 'LevelController')->middleware('admin');
+
+
+//Clase 10 examen y examen 
+Route::resource('editoriales', 'editorialController');
+
+Route::resource('autores', 'autorController');
+
+Route::resource('alumnos', 'alumnoController');
+
+Route::resource('libros', 'libroController');
+
+Route::resource('prestamos', 'prestamoController');
