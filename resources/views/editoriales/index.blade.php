@@ -55,7 +55,7 @@
             </tr>
         @endforeach
         </table>
-       
+        {{$editoriales ->links()}}
         @endsection
 </body>
 </html>

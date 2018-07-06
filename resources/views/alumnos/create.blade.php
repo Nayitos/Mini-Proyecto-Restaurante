@@ -31,7 +31,7 @@
     {!!Form::label('telefono', 'Ingresa un telefono')!!}
     </div>
     
-    {!!Form::button('Aceptar', ['type'=>'submit','class'=>'waves-effect waves-light amber darken-4 btn'] )!!}
-    <a class="waves-effect amber darken-4 btn" href="/alumnos"><i class="material-icons center">arrow_back</i></a>
+    {!!Form::button('Aceptar', ['type'=>'submit','class'=>'waves-effect waves-light  indigo lighten-1 btn'] )!!}
+    <a class="waves-effect waves-light  indigo lighten-1 btn" href="/alumnos"><i class="material-icons center">arrow_back</i></a>
     {!!Form::close()!!}
 @endsection

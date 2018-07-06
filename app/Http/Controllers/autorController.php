@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\autor;
 use Illuminate\Http\Request;
+use Illuminate\support\Facades\DB;
 
 class autorController extends Controller
 {
@@ -15,9 +16,8 @@ class autorController extends Controller
     public function index()
     {
         //
-        $autores = autor::all();
-
-        return view('autores.index', ['autores' => $autores]);
+        $autores = DB::table ('autors')->paginate(4);
+        return  view('autores.index',['autores'=>$autores]);
 
 
     }
@@ -54,10 +54,10 @@ class autorController extends Controller
      * @param  \App\autor  $autor
      * @return \Illuminate\Http\Response
      */
-    public function show(autor $autor)
+    public function show($autor)
     {
         //
-        $autor=autor::find($autor->id);
+        $autor=autor::find($autor);
         //$description=Product::find($description->id);
         return view('autores.show',['autor'=>$autor]);
     }

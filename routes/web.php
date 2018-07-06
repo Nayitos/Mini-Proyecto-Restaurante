@@ -203,6 +203,6 @@ Route::resource('autores', 'autorController');
 
 Route::resource('alumnos', 'alumnoController');
 
-Route::resource('libros', 'libroController');
+Route::resource('libros', 'libroController')->middleware('admin');
 
-Route::resource('prestamos', 'prestamoController');
+Route::resource('prestamos','prestamoController')->middleware('admin');

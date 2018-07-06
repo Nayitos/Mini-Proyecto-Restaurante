@@ -19,12 +19,12 @@ class prestamoController extends Controller
     public function index()
     {
 
-        $prestamos = DB::table('prestamos')
+    $prestamos = DB::table('prestamos')
     ->join('libros', 'prestamos.idLibro', '=', 'libros.id')
     ->join('alumnos', 'prestamos.idAlumno', '=', 'alumnos.id')
     ->join('users', 'prestamos.idUser', '=', 'users.id')
     ->select('prestamos.*', 'libros.titulo as idLibro', 'alumnos.noControl as idAlumno', 'users.id as idUser')
-    ->get();
+    ->paginate(4);
         
     return view('prestamos.index',['prestamos' => $prestamos]);
     }
@@ -62,9 +62,10 @@ class prestamoController extends Controller
      * @param  \App\prestamo  $prestamo
      * @return \Illuminate\Http\Response
      */
-    public function show(prestamo $prestamo)
+    public function show( $prestamo)
     {
-        //
+        $prestamo = prestamo::find($prestamo);
+        return view('prestamos.show',['prestamo'=>$prestamo]);
     }
 
     /**

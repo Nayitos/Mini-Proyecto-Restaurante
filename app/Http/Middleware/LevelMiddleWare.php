@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class LevelMiddleWare
+class LevelMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,11 +15,11 @@ class LevelMiddleWare
      */
     public function handle($request, Closure $next)
     {
-        if  ($request->user() && $request->user ()-> level !=2)
+        if ($request-> user() && $request->user() -> level_id !=2)
         {
             return redirect('home');
-        }
 
+        }
         return $next($request);
     }
 }

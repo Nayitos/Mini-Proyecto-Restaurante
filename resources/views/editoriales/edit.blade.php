@@ -23,8 +23,8 @@
     {!! Form::label('telefono', 'Telefono');!!}
     {!!Form::text('telefono', null); !!}
 
-    {!!Form::button('Actualizar', ['type'=>'submit','class'=>'"waves-effect waves-light amber darken-4 btn'])!!}
-    <a class="waves-effect amber darken-4 btn" href="/editoriales"><i class="material-icons center">arrow_back</i></a>
+    {!!Form::button('Actualizar', ['type'=>'submit','class'=>'"waves-effect waves-light  indigo lighten-1 btn'])!!}
+    <a class="waves-effect waves-light  indigo lighten-1 btn" href="/editoriales"><i class="material-icons center">arrow_back</i></a>
     {!!Form::close()!!}
     
     @endsection

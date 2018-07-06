@@ -31,7 +31,7 @@
     </tr>
     @foreach($libros as $libro)
     <tr>
-    <td >{{$libro->id}}</td>
+    <td> <a  href="{!! '/libros/'.$libro->id!!}">{{$libro ->id}}</a></td>
     <td >{{$libro->isbn}}</td>
     <td >{{$libro->titulo}}</td>
     <td >{{$libro->idAutorPrimario}}</td>
@@ -47,6 +47,9 @@
     </td>
     
     </tr>
+   
     @endforeach
+    
 </table>
+{{$libros ->links()}}
 @endsection

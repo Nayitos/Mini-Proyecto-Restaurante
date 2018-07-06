@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\alumno;
 use Illuminate\Http\Request;
+use Illuminate\support\Facades\DB;
 
 class alumnoController extends Controller
 {
@@ -14,8 +15,8 @@ class alumnoController extends Controller
      */
     public function index()
     {
-        $alumnos = alumno::all();
-        return view('alumnos.index',['alumnos' => $alumnos]);
+        $alumnos = DB::table ('alumnos')->paginate(4);
+        return  view('alumnos.index',['alumnos'=>$alumnos]);
     }
 
     /**

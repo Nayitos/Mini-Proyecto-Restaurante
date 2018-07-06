@@ -42,11 +42,36 @@
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @else
-                        @if (Auth::user()->level==2);
-                         
+              
+                        @if (Auth::user()->level_id==1);
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Ejercicios 1 - 4 </a>
+ <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+ 
+<a class="dropdown-item" href="/formpitagoras"      onclick="event.preventDefault(); Route::get('/formpitagoras').submit();"> Pitgaroas </a>                                 
+<a class="dropdown-item" href="/formbinomio"        onclick="event.preventDefault(); Route::get('/formbinomio').submit();"> Binomio al cudrado </a>
+<a class="dropdown-item" href="/formformulageneral" onclick="event.preventDefault(); Route::get('/formformulageneral').submit();"> Formula General</a>
+<a class="dropdown-item" href="/formbinomioalcubo"  onclick="event.preventDefault(); Route::get('/formbinomioalcubo').submit();"> Binomio al cubo </a>
+</div>
+
+ <li class="nav-item dropdown">
+     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+     {{ Auth::user()->email }} <span class="caret"></span> </a>
+	 
+     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+     <a class="dropdown-item" href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }} </a>
+     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+     @csrf
+     </form>
+     </div>
+     </li>
+                       
+                          @endif
+
+                          @if (Auth::user()->level_id==2);
+                    
                 <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> 
-                 Ejercicios 1 - 4 </a>
+                 Ejercicios 1 - 10 </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         
                         <a class="dropdown-item" href="/formpitagoras"
@@ -69,14 +94,7 @@
                           Route::get('/formbinomioalcubo').submit();">
                           Binomio al cubo </a>
 
-                        @endif
-                        @if (Auth::user()->level==3);
-
-              <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> 
-                 Ejercicios 6 - 10 </a>
                  
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/formvolumenfiguras"
                           onclick="event.preventDefault();
                           Route::get('/formvolumenfiguras').submit();">
@@ -105,13 +123,10 @@
                          <a class="dropdown-item" href="/formdivisionessimples"
                           onclick="event.preventDefault();
                           Route::get('/formdivisionessimples').submit();">
-                          Operaciones fraciones </a>
-
-
-
-                        @endif
-
-                            <li class="nav-item dropdown">
+                          Operaciones fraciones </a
+                          
+                          </div>
+                          <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->email }} <span class="caret"></span>
                                 </a>
@@ -129,6 +144,10 @@
                                     </form>
                                 </div>
                             </li>
+
+                                    @endif
+
+    
                         @endguest
                     </ul>
                 </div>

@@ -2,6 +2,7 @@
 @section('tres')
 
 <script type="text/javascript">
+    <script>
             function confirmDelete()
             {
                 var x = confirm('Estas seguro?')
@@ -32,7 +33,7 @@
     </tr>
     @foreach($alumnos as $alumno)
     <tr>
-    <td >{{$alumno->id}}</td>
+    <td> <a  href="{!! '/alumnos/'.$alumno->id!!}">{{$alumno ->id}}</a></td>
     <td >{{$alumno->noControl}}</td>
     <td >{{$alumno->nombre}}</td>
     <td >{{$alumno->apellidoPaterno}}</td>
@@ -51,4 +52,5 @@
     </tr>
     @endforeach
 </table>
+{{$alumnos ->links()}}
 @endsection

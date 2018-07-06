@@ -32,7 +32,8 @@
 
     
  
-    {!!Form::button('Actualizar', ['type'=>'submit','class'=>'"waves-effect waves-light red accent-4 btn'])!!}
+    {!!Form::button('Actualizar', ['type'=>'submit','class'=>'"waves-effect waves-light  indigo lighten-1 btn'])!!}
+    <a class="waves-effect waves-light  indigo lighten-1 btn" href="/prestamos"><i class="material-icons center">arrow_back</i></a>
     {!!Form::close()!!}
 
     @endsection

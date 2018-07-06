@@ -8,7 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-
         @extends('layout')
         @section('tres')
         <script>
@@ -49,12 +48,13 @@
                 {!!Form::open(['url' => '/autores/'.$autor->id, 'method' => 'delete', 'style'=> 'display: inline-block;','id'=>'FormDelete()','onsubmit'=>'return ConfirmDelete()']) !!}
                 {!!Form::button('<i class="material-icons right">delete</i>Delete', ['type'=>'submit', 'class'=>'"waves-effect waves-light red accent-4 btn']) !!}
                 {!!Form::close()!!}
-                </div>
-                
-                </td>
-            </tr>
+            </div>
+        </td>
+        </td>
+        
+        </tr>
         @endforeach
         </table>
+        {{$autores ->links()}}
         @endsection
-</body>
-</html>
+     

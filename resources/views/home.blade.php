@@ -14,7 +14,7 @@
                          
                         </div>
                     @endif
-                    Tu eres!:   {{ Auth::user()->name}} , prueba realizar algún ejercicio
+                    Tu eres!: {{ Auth::user()->firstName}} {{ Auth::user()->lastName}} , prueba realizar algún ejercicio
                     chido en la parte superior izquierda, seleccionando el de tu necesidad, dependiendo tu nivel de usuario 
                     se te mostrarán los ejercicios que se pueden realizar.
                    

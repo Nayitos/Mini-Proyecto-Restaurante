@@ -24,7 +24,7 @@
     {!!Form::text('apellidoMaterno', null); !!}
 
     {!!Form::button('Actualizar', ['type'=>'submit','class'=>'"waves-effect waves-light  indigo lighten-1 btn'])!!}
-    <a class="waves-effect waves-light  indigo lighten-1 btn" href="/editoriales"><i class="material-icons center">arrow_back</i></a>
+    <a class="waves-effect waves-light  indigo lighten-1 btn" href="/autores"><i class="material-icons center">arrow_back</i></a>
     {!!Form::close()!!}
     
     @endsection

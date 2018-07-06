@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVentasTable extends Migration
+class CreateLevelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateVentasTable extends Migration
      */
     public function up()
     {
-        Schema::create('ventas', function (Blueprint $table) {
+        Schema::create('levels', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('idPedido');
+            $table->string('description'); 
             $table->timestamps();
-            $table->foreign('idPedido')->references('id')->on('pedidos')->onDelete('cascade');
-        
+
         });
     }
 
@@ -29,6 +28,6 @@ class CreateVentasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ventas');
+        Schema::dropIfExists('levels');
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\editorial;
 use Illuminate\Http\Request;
+use Illuminate\support\Facades\DB;
+
 
 class editorialController extends Controller
 {
@@ -14,10 +16,9 @@ class editorialController extends Controller
      */
     public function index()
     {
-        $editoriales = editorial::all();
-
-        return view('editoriales.index', ['editoriales' => $editoriales]);
-   }
+        $editoriales = DB::table ('editorials')->paginate(4);
+        return  view('editoriales.index',['editoriales'=>$editoriales]);
+    }
         
     
 
@@ -54,10 +55,10 @@ class editorialController extends Controller
      * @param  \App\editorial  $editorial
      * @return \Illuminate\Http\Response
      */
-    public function show(editorial $editorial)
+    public function show($editorial)
     {
         //
-        $editorial=editorial::find($editorial->id);
+        $editorial=editorial::find($editorial);
         //$description=Product::find($description->id);
         return view('editoriales.show',['editorial'=>$editorial]);
     }

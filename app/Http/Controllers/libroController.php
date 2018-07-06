@@ -23,7 +23,7 @@ class libroController extends Controller
         ->join('autors as a2', 'a2.id', '=', 'libros.idAutorSecundario')
         ->join('editorials', 'libros.idEditorial', '=', 'editorials.id')
         ->select('libros.*', 'a1.nombre as idAutorPrimario', 'a2.nombre as idAutorSecundario', 'editorials.nombre as idEditorial')
-        ->get();
+        ->paginate(3);
 
         return view('libros.index',['libros' => $libros]);
     }
@@ -64,7 +64,7 @@ class libroController extends Controller
     public function show(libro $libro)
     {
 
-        $libro = libro::find($book->id);
+        $libro = libro::find($libro->id);
         $autor= autor::pluck('apellidoPaterno','nombre', 'id', 'apellidoPaterno','nombre', 'id');
         $editorial = editorial::pluck('nombre', 'id', 'nombre', 'id'); 
         return view('libros.show', ['libro' => $libro, 'autor' => $autor, 'editorial'=>$editorial]);
