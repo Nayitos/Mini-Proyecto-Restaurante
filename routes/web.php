@@ -197,15 +197,15 @@ Route::resource('levels', 'LevelController')->middleware('admin');
 
 
 //Clase 10 examen y examen 
-Route::resource('editoriales', 'editorialController');
+Route::resource('editoriales', 'editorialController')->middleware('admin');
 
-Route::resource('autores', 'autorController');
+Route::resource('autores', 'autorController')->middleware('admin');
 
-Route::resource('alumnos', 'alumnoController');
+Route::resource('alumnos', 'alumnoController')->middleware('admin');
 
-Route::resource('libros', 'libroController')->middleware('admin');
+Route::resource('libros', 'libroController');
 
-Route::resource('prestamos','prestamoController')->middleware('admin');
+Route::resource('prestamos','prestamoController');
 
 //Clase 11 Examen y los ajax
 
@@ -213,32 +213,34 @@ Route::resource('prestamos','prestamoController')->middleware('admin');
 Route::get('/prueba1/ajax', 'alumnoController@prueba1')->name('prueba1.ajax');
 Route::get('/prueba1/busqueda', function () {
     return view('alumnos.busqueda');
-});
+})->middleware('admin');
 
 //Ajax editorial
 Route::get('/prueba3/ajax', 'editorialController@prueba3')->name('prueba3.ajax');
 Route::get('/prueba3/busqueda', function () {
     return view('editoriales.busqueda');
-});
+})->middleware('admin');
 
 //AJAX AUTOR
 Route::get('/prueba2/ajax', 'autorController@prueba2')->name('prueba2.ajax');
 Route::get('/prueba2/busqueda', function () {
     return view('autores.busqueda');
-});
+})->middleware('admin');
 
 //Ajax libro
 Route::get('/prueba4/ajax', 'libroController@prueba4')->name('prueba4.ajax');
 Route::get('/prueba4/busqueda', function () {
-    return view('libros.busqueda');
+    return view('libros.busqueda')->middleware('admin');
 });
 
 //Ajax Prestamo
 Route::get('/prueba5/ajax', 'prestamoController@prueba5')->name('prueba5.ajax');
 Route::get('/prueba5/busqueda', function () {
-    return view('prestamos.busqueda');
+    return view('prestamos.busqueda')->middleware('admin');
 });
 
 //Error de prestamos
 Route::get('/nolibros', function () {  return view('nolibros'); });
 
+//Clase 12 y final 
+Route::put('pretamos/putdata', 'prestamoController@update');

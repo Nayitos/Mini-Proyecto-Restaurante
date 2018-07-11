@@ -23,7 +23,7 @@ class prestamoController extends Controller
     ->join('libros', 'prestamos.idLibro', '=', 'libros.id')
     ->join('alumnos', 'prestamos.idAlumno', '=', 'alumnos.id')
     ->join('users', 'prestamos.idUser', '=', 'users.id')
-    ->select('prestamos.*', 'libros.titulo as idLibro', 'alumnos.noControl as idAlumno', 'users.id as idUser')
+    ->select('prestamos.*','prestamos.id as idz', 'libros.id as idx' ,'libros.titulo as idLibro', 'alumnos.noControl as idAlumno', 'users.id as idUser')
     ->paginate(4);
         
     return view('prestamos.index',['prestamos' => $prestamos]);
@@ -54,23 +54,20 @@ class prestamoController extends Controller
     {
         $data = $request->all();
         $cantidad = libro::where('id', $request->idLibro)->pluck("cantidad")->first();
-        if ($cantidad > 1) {
+        if ($cantidad >= 1) {
         libro::where('id', $request->idLibro)->decrement('cantidad',1);   
         
             prestamo::create($data);
-            return redirect('prestamos');      
-
-        }
+            return redirect('prestamos');      }
         else
         {
-           
             return redirect('nolibros');           
-         
         }
-     
+
 
     }
 
+    
     /**
      * Display the specified resource.
      *
@@ -107,11 +104,26 @@ class prestamoController extends Controller
      */
     public function update(Request $request,$id)
     {
+       
         $vprestamo = prestamo::find($id);
+    
+        if($vprestamo !=null) {
         $data = $request->all();
         $vprestamo->update($data);    
 
         return redirect('prestamos');
+        }
+
+        else
+        {
+        $vprestamo = prestamo::find($request->idz);
+        $vlibro = libro ::find($request->idx);
+        $vlibro->cantidad +=1;
+        $vlibro->update();
+        $vprestamo->destroy($request->idz);
+        return redirect('prestamos');
+
+        }
     }
 
     /**
