@@ -29,8 +29,10 @@
 	<input type="datetime-local" id="fechaEntrega" name="fechaEntrega">
     </div>
     
-    
+
     {!!Form::button('Aceptar', ['type'=>'submit','class'=>'waves-effect waves-light  indigo lighten-1 btn'] )!!}
     <a class="waves-effect waves-light  indigo lighten-1 btn" href="/prestamos"><i class="material-icons center">arrow_back</i></a>
     {!!Form::close()!!}
+
+    
 @endsection

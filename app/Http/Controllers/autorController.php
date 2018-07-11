@@ -106,4 +106,36 @@ class autorController extends Controller
         $vautor->destroy($id);
         return redirect('autores');
     }
+
+    public function prueba2(Request $request, autor $autor){
+        $query = $request -> Query;
+        //PETICIÓN Query
+    
+    $consulta = autor::select('*')
+    ->where('nombre', 'like', '%'.$query.'%')
+    ->get();
+    
+    $tablaContenido = '';
+    foreach ($consulta as $row) {
+                    $tablaContenido.='<tr>
+                   <td>'.$row->id.'</td> 
+                    <td>'.$row->nombre.'</td>
+                    <td>'.$row->apellidoPaterno.'</td>
+                    <td>'.$row->apellidoMaterno.'</td>
+                    
+    </tr>';   
+    };
+    
+    
+    $resultado = array(
+     'valor' => $tablaContenido,
+            );
+    //ahora se transforma en un json
+            echo json_encode($resultado);
+        
+    
+    }
+
+
+
 }

@@ -17,7 +17,7 @@ class CreateEditorialesTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('direccion');
-            $table->string('telfono');
+            $table->string('telefono');
             $table->timestamps();
         });
     }

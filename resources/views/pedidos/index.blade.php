@@ -45,12 +45,11 @@
                 <td>{{ $pedido->precio}}</td>
                
 
-                <td><a class="waves-effect waves-light  indigo lighten-1 btn" href="{!! '/pedidos/'.$pedido->id.'/edit'!!}"><i class="material-icons right">edit</i>Edit</a>
                 <div id=formDelete>
-                {!!Form::open(['url' => '/pedidos/'.$pedido->id, 'method' => 'delete', 'style'=> 'display: inline-block;','id'=>'FormDelete()','onsubmit'=>'return ConfirmDelete()']) !!}
-                {!!Form::button('<i class="material-icons right">delete</i>Delete', ['type'=>'submit', 'class'=>'"waves-effect waves-light red accent-4 btn']) !!}
-                {!!Form::close()!!}
-                </div>
+                    {!!Form::open(['url' => '/libros/'.$libro->id, 'method' => 'delete', 'style'=> 'display: inline-block;','onSubmit'=>'return confirmDelete()']) !!}
+                    {!!Form::button('<i class="material-icons right">delete</i>Eliminar', ['type'=>'submit', 'class'=>'"waves-effect waves-light indigo darken-4 btn']) !!}
+                    {!!Form::close()!!}
+                    </div>
                 
                 </td>
             </tr>

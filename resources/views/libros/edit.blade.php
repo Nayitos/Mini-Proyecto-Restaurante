@@ -26,7 +26,9 @@
 
     {!! Form::select('idEditorial', $editorial, $libro->idEditorial);!!}
     
- 
+    {!! Form::label('cantidad', 'Editar ISBN');!!}
+    {!! Form::text('cantidad',null);!!}
+    
     {!!Form::button('Actualizar', ['type'=>'submit','class'=>'"waves-effect waves-light  indigo lighten-1 btn'])!!}
     <a class="waves-effect waves-light  indigo lighten-1 btn" href="/libros"><i class="material-icons center">arrow_back</i></a>
     {!!Form::close()!!}

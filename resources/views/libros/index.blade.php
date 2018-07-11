@@ -28,7 +28,7 @@
     <th >ID Autor Primario</th>
     <th >ID Autor Secundario</th>
     <th >ID Editorial</th>
-    </tr>
+    <th >Cantidad </th>    
     @foreach($libros as $libro)
     <tr>
     <td> <a  href="{!! '/libros/'.$libro->id!!}">{{$libro ->id}}</a></td>
@@ -37,6 +37,8 @@
     <td >{{$libro->idAutorPrimario}}</td>
     <td >{{$libro->idAutorSecundario}}</td>
     <td >{{$libro->idEditorial}}</td>
+    <td >{{$libro->cantidad}}</td>
+
     <td><a class="waves-effect waves-light  indigo lighten-1 btn" href="{!! '/libros/'.$libro->id.'/edit'!!}"><i class="material-icons right">edit</i>Editar</a>
     <div id=formDelete>
     {!!Form::open(['url' => '/libros/'.$libro->id, 'method' => 'delete', 'style'=> 'display: inline-block;','onSubmit'=>'return confirmDelete()']) !!}

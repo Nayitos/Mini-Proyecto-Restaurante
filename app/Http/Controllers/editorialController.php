@@ -109,4 +109,32 @@ class editorialController extends Controller
         $veditorial->destroy($id);
         return redirect('editoriales');
     }
+
+    //Ajax
+    public function prueba3(Request $request, editorial $editorial){
+        $query = $request -> Query;
+        //PETICIÓN Query
+    
+    $consulta = editorial::select('*')
+    ->where('nombre', 'like', '%'.$query.'%')
+    ->get();
+    
+    
+    $tablaContenido = '';
+    foreach ($consulta as $row) {
+                    $tablaContenido.= '<tr>
+                   <td>'.$row->id.'</td> 
+                    <td>'.$row->nombre.'</td>
+                    <td>'.$row->direccion.'</td>
+                    <td>'.$row->telefono.'</td>
+    
+                    </tr>';   
+    };
+    
+    $resultado = array(
+     'valor' => $tablaContenido,
+            );
+    //ahora se transforma en un json
+            echo json_encode($resultado);
+        }
 }

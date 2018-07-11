@@ -39,7 +39,9 @@ class prestamoController extends Controller
         $libros = libro::pluck('titulo','id');
         $alumnos = alumno::pluck('nombre','id');
         $users = User::pluck('id','id');
+        
         return view('prestamos.create',['libros' => $libros,'alumnos' => $alumnos, 'users' => $users]);
+
     }
 
     /**
@@ -51,9 +53,22 @@ class prestamoController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $cantidad = libro::where('id', $request->idLibro)->pluck("cantidad")->first();
+        if ($cantidad > 1) {
+        libro::where('id', $request->idLibro)->decrement('cantidad',1);   
         
-        prestamo::create($data);   
-         return redirect('prestamos'); 
+            prestamo::create($data);
+            return redirect('prestamos');      
+
+        }
+        else
+        {
+           
+            return redirect('nolibros');           
+         
+        }
+     
+
     }
 
     /**
@@ -111,4 +126,34 @@ class prestamoController extends Controller
         $vprestamo->destroy($id);
         return redirect('prestamos');
     }
+
+    public function prueba5(Request $request,prestamo $prestamo){
+        $query = $request -> Query;
+        //PETICIÓN Query
+    
+    $consulta = prestamo::select('*')
+    ->where('fechaPrestamo', 'like', '%'.$query.'%')
+    ->get();
+    
+    $tablaContenido = '';
+    foreach ($consulta as $row) {
+                    $tablaContenido.= '<tr>
+                   <td>'.$row->id.'</td> 
+                    <td>'.$row->idLibro.'</td>
+                    <td>'.$row->idAlumno.'</td>
+                    <td>'.$row->idUser.'</td>
+                    <td>'.$row->fechaPrestamo.'</td>
+                    <td>'.$row->fechaEntrega.'</td>
+    
+                    </tr>';   
+    };
+    
+    $resultado = array(
+     'valor' => $tablaContenido,
+            );
+    //ahora se transforma en un json
+            echo json_encode($resultado);
+        }
+
+
 }

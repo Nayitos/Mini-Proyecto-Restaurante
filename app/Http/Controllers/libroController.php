@@ -113,4 +113,39 @@ class libroController extends Controller
         $vlibro->destroy($id);
         return redirect('libros');
     }
+
+    public function prueba4(Request $request, Libro $libro){
+
+
+        $query = $request -> Query;
+        //PETICIÓN Query
+     
+    
+    $consulta = Libro::select('*')
+    ->where('titulo', 'like', '%'.$query.'%')
+    ->get();
+    
+    
+    $tablaContenido = '';
+    foreach ($consulta as $row) {
+                    $tablaContenido.= '<tr>
+                   <td>'.$row->id.'</td> 
+                    <td>'.$row->isbn.'</td>
+                    <td>'.$row->titulo.'</td> 
+                    <td>'.$row->idAutorPrimario.'</td>
+                    <td>'.$row->idAutorSecundario.'</td> 
+                    <td>'.$row->idEditorial.'</td>
+                    </tr>';   
+    };
+    
+    $resultado = array(
+     'valor' => $tablaContenido,
+            );
+    //ahora se transforma en un json
+            echo json_encode($resultado);
+        }
+    
+
+
+
 }

@@ -206,3 +206,39 @@ Route::resource('alumnos', 'alumnoController');
 Route::resource('libros', 'libroController')->middleware('admin');
 
 Route::resource('prestamos','prestamoController')->middleware('admin');
+
+//Clase 11 Examen y los ajax
+
+//Ajax alumno
+Route::get('/prueba1/ajax', 'alumnoController@prueba1')->name('prueba1.ajax');
+Route::get('/prueba1/busqueda', function () {
+    return view('alumnos.busqueda');
+});
+
+//Ajax editorial
+Route::get('/prueba3/ajax', 'editorialController@prueba3')->name('prueba3.ajax');
+Route::get('/prueba3/busqueda', function () {
+    return view('editoriales.busqueda');
+});
+
+//AJAX AUTOR
+Route::get('/prueba2/ajax', 'autorController@prueba2')->name('prueba2.ajax');
+Route::get('/prueba2/busqueda', function () {
+    return view('autores.busqueda');
+});
+
+//Ajax libro
+Route::get('/prueba4/ajax', 'libroController@prueba4')->name('prueba4.ajax');
+Route::get('/prueba4/busqueda', function () {
+    return view('libros.busqueda');
+});
+
+//Ajax Prestamo
+Route::get('/prueba5/ajax', 'prestamoController@prueba5')->name('prueba5.ajax');
+Route::get('/prueba5/busqueda', function () {
+    return view('prestamos.busqueda');
+});
+
+//Error de prestamos
+Route::get('/nolibros', function () {  return view('nolibros'); });
+

@@ -26,6 +26,11 @@
     {!! Form::select('idEditorial',$editoriales);!!}
     {!!Form::label('idEditorial', 'Ingresa un editorial')!!}
     </div>
+
+    <div class="input-field">
+    {!!Form::text('cantidad', null, ['class'=>'validate','id'=>'cantidad']); !!}
+    {!!Form::label('cantidad', 'cantidad')!!}
+    </div>
     
     {!!Form::button('Aceptar', ['type'=>'submit','class'=>'waves-effect waves-light  indigo lighten-1 btn'] )!!}
     <a class="waves-effect waves-light  indigo lighten-1 btn" href="/libros"><i class="material-icons center">arrow_back</i></a>

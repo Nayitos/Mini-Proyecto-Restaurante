@@ -95,4 +95,34 @@ class alumnoController extends Controller
         $valumno->destroy($id);
         return redirect('alumnos');
     }
+
+    public function prueba1(Request $request, Alumno $alumno){
+        $query = $request -> Query;
+        //PETICIÓN Query
+    
+    $consulta = Alumno::select('*')
+    ->where('nombre', 'like', '%'.$query.'%')
+    ->get();
+    
+    $tablaContenido = '';
+    foreach ($consulta as $row) {
+                    $tablaContenido.='<tr>
+                   <td>'.$row->id.'</td> 
+                    <td>'.$row->noControl.'</td>
+                    <td>'.$row->nombre.'</td>
+                    <td>'.$row->apellidoPaterno.'</td>
+                    <td>'.$row->apellidoMaterno.'</td>
+                    <td>'.$row->direccion.'</td>
+                    <td>'.$row->telefono.'</td>
+    </tr>';   
+    };
+    
+    $resultado = array(
+     'valor' => $tablaContenido,
+            );
+    //ahora se transforma en un json
+            echo json_encode($resultado);
+        }
+
+
 }

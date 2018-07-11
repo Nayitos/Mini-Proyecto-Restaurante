@@ -16,10 +16,14 @@
       <div class="nav-wrapper">
           <a href="/home" class="brand-logo"  large: 6rem><i class="material-icons">format_list_numbered</i>MateChidas</a>
           <ul class="right hide-on-med-and-down">
-            <li><a href="/home"><i class="material-icons">keyboard_backspace </i></a></li>
-            Volver
+            <li><a class="waves-effect red darken-1 btn" href="/home"><i class="material-icons center">home</i></a></li>
+            <li><a class="waves-effect red darken-1 btn" href="/editoriales"><i class="material-icons center">import_contacts</i></a></li>
+            <li><a class="waves-effect red darken-1 btn" href="/autores"><i class="material-icons center">supervisor_account</i></a></li>
+            <li><a class="waves-effect red darken-1 btn" href="/alumnos"><i class="material-icons center">person</i></a></li>
+            <li><a class="waves-effect red darken-1 btn" href="/prestamos"><i class="material-icons center">screen_share</i></a></li>
+            <li><a class="waves-effect brown darken-1 btn" href="/libros"><i class="material-icons center">collections_bookmark</i></a></li>
           </ul>
-        </div>
+          </div>
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">Navbar Link</a></li>
