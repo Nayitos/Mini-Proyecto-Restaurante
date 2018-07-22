@@ -192,6 +192,7 @@ Route::get('/prueba/busqueda', function(){
 });
 
 
+
 //Clase 9
 Route::resource('levels', 'LevelController')->middleware('admin');
 
@@ -206,6 +207,7 @@ Route::resource('alumnos', 'alumnoController')->middleware('admin');
 Route::resource('libros', 'libroController');
 
 Route::resource('prestamos','prestamoController');
+
 
 //Clase 11 Examen y los ajax
 
@@ -241,6 +243,11 @@ Route::get('/prueba5/busqueda', function () {
 
 //Error de prestamos
 Route::get('/nolibros', function () {  return view('nolibros'); });
-
+Route::get('/noproduct', function () {  return view('noproduct'); });
 //Clase 12 y final 
 Route::put('pretamos/putdata', 'prestamoController@update');
+
+Route::put('putdata', 'ProductController@update');
+
+Route::get('products/{aumentar}/aumentar','ProductController@aumentar');
+Route::put('updateaumentar','ProductController@updateaumentar');

@@ -20,7 +20,7 @@ class ProductController extends Controller
         //$products= Product::all();
         $products = DB::table ('products')
         ->join('categories','products.category_id','=','categories.id')
-        ->select('products.*','categories.description as cddesc')
+        ->select('products.*','categories.description as cddesc','products.quantity as idx')
         ->paginate (2);
         return  view('products.index',['products'=>$products]);
         
@@ -32,11 +32,12 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-
-
+    {   
+        
+        $products = Product::pluck('description','id');
         $categories = Category::pluck('description','id');
-        return view('products.create',['categories' => $categories]);
+        return view('products.create',['products' => $products,'categories' => $categories]);
+
     }
 
     /**
@@ -48,14 +49,13 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
-        $data= $request->all();
+        $data = $request->all();
         Product::create($data);
         return redirect('products');
-  
-
-
+        
     }
 
+    
     /**
      * Display the specified resource.
      *
@@ -96,12 +96,50 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
-
+        
         $vproduct = Product::find($product->id);
-        $data=$request->all();
-        $vproduct->update($data);
+        if($request ->token1 == "niuno") {
+            
+        
+        $data = $request->all();
+        $vproduct->update($data);    
         return redirect('products');
+        }
+
+        else if($request ->token1 == "disminuir")
+        {
+           
+        $vproduct2 = Product::find($request->idx);
+        if ($vproduct2->quantity >= $request->quantity ){
+        $vproduct2->quantity -= $request->quantity;
+
+        $vproduct2->update();
+        }
+        else
+        {
+
+            
+            return view('noproduct');
+        }
+
+        return redirect('products');
+
+        }
+        else if ($request ->token1 == "aumentar")
+        {
+            
+        $vproduct = Product::find($request->idx);
+        
+        $vproduct->quantity += $request->quantity;
+        $vproduct->update();
+        return redirect('products');
+       
+        }
+        else
+        {}
+    
+
+
     }
 
     /**
@@ -117,4 +155,16 @@ class ProductController extends Controller
         $product->destroy($product->id);
         return redirect('products');
     }
+
+
+
+
+
+    public function aumentar( $aumentar)
+    {
+        $vproduct = Product::find($aumentar);
+        
+        return view('products/aumentar',['product'=>$vproduct]);
+    }
+   
 }

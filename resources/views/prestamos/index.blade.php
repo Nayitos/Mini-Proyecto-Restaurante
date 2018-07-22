@@ -69,7 +69,7 @@
 @foreach($prestamos as $prestamo)
 <tr>
 <td> <a  href="{!!'/prestamos/'.$prestamo->id!!}">{{$prestamo->id}}</a></td>
-<td >{{$prestamo->idLibro}}</td>
+<td >{{$prestamo->titulolibro}}</td>
 <td >{{$prestamo->idAlumno}}</td>
 <td >{{$prestamo->idUser}}</td>
 <td >{{$prestamo->fechaPrestamo}}</td>

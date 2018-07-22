@@ -10,19 +10,17 @@
         @extends('layout')
         @section('tres')
 
-    <h3>Edit</h3>
+    <h3>Aumentar producto</h3>
 
     {!!Form::model($product, ['route' => ['products.update', $product->id], 'method'=>'put']) !!}
-    {!!Form::text('sku', null); !!}
-    {!!Form::text('description', null); !!}
-    {!!Form::text('price', null); !!}
+
+    <input type="hidden" name="token1"  value= "aumentar">
+
+    <input type="hidden" name="idx"  value= "{{$product->id}}">
     {!!Form::text('quantity', null); !!}
     <div class="input-field">
-    {!!Form::select('category_id',$categories); !!}
-    </div>
-    <input type="hidden" name="token1"  value= "niuno">
 
-    {!!Form::button('Actualizar', ['type'=>'submit','class'=>'"waves-effect waves-light red accent-4 btn'])!!}
+    {!!Form::button('Aumentar', ['type'=>'submit','class'=>'"waves-effect waves-light red accent-4 btn'])!!}
     {!!Form::close()!!}
 
    

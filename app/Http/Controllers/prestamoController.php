@@ -8,9 +8,18 @@ use App\alumno;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class prestamoController extends Controller
 {
+
+    public function __construct()
+    {
+    $this->middleware('auth');
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +32,7 @@ class prestamoController extends Controller
     ->join('libros', 'prestamos.idLibro', '=', 'libros.id')
     ->join('alumnos', 'prestamos.idAlumno', '=', 'alumnos.id')
     ->join('users', 'prestamos.idUser', '=', 'users.id')
-    ->select('prestamos.*','prestamos.id as idz', 'libros.id as idx' ,'libros.titulo as idLibro', 'alumnos.noControl as idAlumno', 'users.id as idUser')
+    ->select('prestamos.*','prestamos.id as idz', 'libros.id as idx' ,'libros.titulo as titulolibro', 'alumnos.noControl as idAlumno', 'users.id as idUser')
     ->paginate(4);
         
     return view('prestamos.index',['prestamos' => $prestamos]);
@@ -88,11 +97,19 @@ class prestamoController extends Controller
      */
     public function edit(prestamo $prestamo)
     {
+        if( Auth::user()->level_id==1)
+        {
         $prestamo = prestamo::find($prestamo->id);
         $libro = libro::pluck('titulo', 'id');
         $alumno = alumno::pluck('nombre', 'id'); 
         $user = User::pluck('id', 'id');
         return view('prestamos.edit', ['prestamo' => $prestamo, 'libro' => $libro, 'alumno' => $alumno, 'user'=>$user]);
+        }
+        else
+        {
+            return view('Auth.login');
+
+        }
     }
 
     /**

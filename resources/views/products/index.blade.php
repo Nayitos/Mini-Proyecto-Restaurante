@@ -32,27 +32,36 @@
         <br>    
         <table>
             <tr>
-                <th>ID</th>
-                <th>Nombre</th>
+                <th>ID</th> 
+                <th>SKU</th>
                 <th>Description</th>
-                <th>Category</th>
                 <th>Price</th>
+                <th>Quantity</th>
+                <th>Category</th>
+          
             </tr>
         @foreach($products as $product)
             <tr>
                 <td> <a  href="{!! '/products/'.$product->id!!}">{{$product ->id}}</a></td>
-                <td>{{ $product->name}}</td>
+                <td>{{ $product->sku}}</td>
                 <td>{{ $product->description}}</td>
-                <td>{{ $product->cddesc}}</td>
                 <td>{{ $product->price}}</td>
+                <td>{{ $product->quantity}}</td>
+                <td>{{ $product->cddesc}}</td>
+                
                 <td><a class="waves-effect waves-light  indigo lighten-1 btn" href="{!! '/products/'.$product->id.'/edit'!!}"><i class="material-icons right">edit</i>Edit</a>
+                                 
+                <td><a class="waves-effect waves-light  indigo lighten-1 btn" href="{!! '/products/'.$product->id.'/aumentar'!!}"><i class="material-icons right">add_circle</i>aumentar</a>   
+                
                 <div id=formDelete>
                 {!!Form::open(['url' => '/products/'.$product->id, 'method' => 'delete', 'style'=> 'display: inline-block;','id'=>'FormDelete()','onsubmit'=>'return ConfirmDelete()']) !!}
                 {!!Form::button('<i class="material-icons right">delete</i>Delete', ['type'=>'submit', 'class'=>'"waves-effect waves-light red accent-4 btn']) !!}
                 {!!Form::close()!!}
                 </div>
                 
-                </td>
+         
+            
+
             </tr>
         @endforeach
         </table>

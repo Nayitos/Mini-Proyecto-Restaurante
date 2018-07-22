@@ -20,8 +20,6 @@ class CreatePrestamosTable extends Migration
             $table->unsignedInteger('idAlumno');
             $table->unsignedInteger('idUser');
 
-
-
             $table->dateTime('fechaPrestamo');
             $table->dateTime('fechaEntrega');
 

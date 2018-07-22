@@ -79,6 +79,7 @@
 {!!Form::open(['url' => '/libros/'.$libro->id, 'method' => 'delete', 'style'=> 'display: inline-block;','onSubmit'=>'return confirmDelete()']) !!}
 {!!Form::button('<i class="material-icons right">delete</i>Eliminar', ['type'=>'submit', 'class'=>'"waves-effect waves red btn']) !!}
 {!!Form::close()!!}
+
 </div>
 </td>
 </td>
