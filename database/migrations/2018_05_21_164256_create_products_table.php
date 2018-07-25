@@ -19,16 +19,9 @@ class CreateProductsTable extends Migration
             $table->string('description');
             $table->decimal('price', 10,2);
             $table->integer('quantity');
-
-            $table->unsignedInteger('category_id');
-          
+            $table->unsignedInteger('category_id');          
             $table->timestamps();
-
-            $table->foreign('category_id')
-             ->references('id')->on('categories')
-             ->onDelete('cascade');
-
-      
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
         
     }

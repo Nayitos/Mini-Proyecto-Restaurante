@@ -15,6 +15,7 @@ class CreateImportacionesTable extends Migration
     {
         Schema::create('importaciones', function (Blueprint $table) {
             $table->increments('id');
+            
             $table->timestamps();
         });
     }

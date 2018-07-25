@@ -99,8 +99,6 @@ class ProductController extends Controller
         
         $vproduct = Product::find($product->id);
         if($request ->token1 == "niuno") {
-            
-        
         $data = $request->all();
         $vproduct->update($data);    
         return redirect('products');
@@ -136,7 +134,9 @@ class ProductController extends Controller
        
         }
         else
-        {}
+        {
+            
+        }
     
 
 
@@ -163,7 +163,6 @@ class ProductController extends Controller
     public function aumentar( $aumentar)
     {
         $vproduct = Product::find($aumentar);
-        
         return view('products/aumentar',['product'=>$vproduct]);
     }
    
