@@ -50,7 +50,8 @@
                 <td>{{ $product->cddesc}}</td>
                 
                 <td><a class="waves-effect waves-light  indigo lighten-1 btn" href="{!! '/products/'.$product->id.'/edit'!!}"><i class="material-icons right">edit</i>Edit</a>
-                                 
+
+                {{--Ruta para mandar a una ventana de aumentar los productos       --}}  
                 <td><a class="waves-effect waves-light  indigo lighten-1 btn" href="{!! '/products/'.$product->id.'/aumentar'!!}"><i class="material-icons right">add_circle</i>aumentar</a>   
                 
                 <div id=formDelete>

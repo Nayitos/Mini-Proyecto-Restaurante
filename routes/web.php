@@ -247,7 +247,9 @@ Route::get('/noproduct', function () {  return view('noproduct'); });
 //Clase 12 y final 
 Route::put('pretamos/putdata', 'prestamoController@update');
 
+//Putdata para el metodo directo a agregar o disminuir productos
 Route::put('putdata', 'ProductController@update');
 
+//Ruta para aumentar productos junto a su respectivo metodo
 Route::get('products/{aumentar}/aumentar','ProductController@aumentar');
 Route::put('updateaumentar','ProductController@updateaumentar');

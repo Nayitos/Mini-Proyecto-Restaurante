@@ -156,10 +156,7 @@ class ProductController extends Controller
         return redirect('products');
     }
 
-
-
-
-
+    //Solo es para la vista de aumentar
     public function aumentar( $aumentar)
     {
         $vproduct = Product::find($aumentar);
